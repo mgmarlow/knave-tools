@@ -1,15 +1,59 @@
 {{define "content"}}
 
-<h1>Knave tools</h1>
-<p>Hello {{.Knave.Name}}</p>
+<h1>Welcome, {{.Knave.Name}}</h1>
 
-<ul>
-  <li>STR {{.Knave.Strength}}</li>
-  <li>DEX {{.Knave.Dexterity}}</li>
-  <li>CON {{.Knave.Constitution}}</li>
-  <li>INT {{.Knave.Intelligence}}</li>
-  <li>CHA {{.Knave.Charisma}}</li>
-  <li>WIS {{.Knave.Wisdom}}</li>
-</ul>
+<section>
+  <h2>Attributes</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Attr</th>
+        <th>Bonus</th>
+        <th>Defense</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>STR</td>
+        <td>+ {{bonus .Knave.Strength}}</td>
+        <td>{{.Knave.Strength}}</td>
+      </tr>
+      <tr>
+        <td>DEX</td>
+        <td>+ {{bonus .Knave.Dexterity}}</td>
+        <td>{{.Knave.Dexterity}}</td>
+      </tr>
+      <tr>
+        <td>CON</td>
+        <td>+ {{bonus .Knave.Constitution}}</td>
+        <td>{{.Knave.Constitution}}</td>
+      </tr>
+      <tr>
+        <td>INT</td>
+        <td>+ {{bonus .Knave.Intelligence}}</td>
+        <td>{{.Knave.Intelligence}}</td>
+      </tr>
+      <tr>
+        <td>CHA</td>
+        <td>+ {{bonus .Knave.Charisma}}</td>
+        <td>{{.Knave.Charisma}}</td>
+      </tr>
+      <tr>
+        <td>WIS</td>
+        <td>+ {{bonus .Knave.Wisdom}}</td>
+        <td>{{.Knave.Wisdom}}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Inventory</h2>
+  <p>
+    Wearing: <strong>{{armorName .Knave.Armor}}</strong> (Bonus: +{{bonus
+    .Knave.Armor}} Defense: {{.Knave.Armor}})
+  </p>
+</section>
 
 {{end}}

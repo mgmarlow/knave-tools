@@ -14,7 +14,32 @@ import (
 var files embed.FS
 
 // Template functions
-var funcs = template.FuncMap{}
+var funcs = template.FuncMap{
+	"bonus": func(defense int) int {
+		return defense - 10
+	},
+	"armorName": func(kind int) string {
+		return armorDisplayName[kind]
+	},
+}
+
+const (
+	NoArmor   int = 11
+	Gambeson      = 12
+	Brigadine     = 13
+	Chain         = 14
+	HalfPlate     = 15
+	FullPlate     = 16
+)
+
+var armorDisplayName = map[int]string{
+	FullPlate: "Full Plate",
+	HalfPlate: "Half Plate",
+	Chain:     "Chain",
+	Brigadine: "Brigadine",
+	Gambeson:  "Gambeson",
+	NoArmor:   "No armor",
+}
 
 type IndexContent struct {
 	Knave *Knave
@@ -46,17 +71,19 @@ type Knave struct {
 	Intelligence int
 	Wisdom       int
 	Charisma     int
+	Armor        int
 }
 
 func NewKnave() *Knave {
 	return &Knave{
 		Name:         "foo bar",
-		Strength:     abilityRoll(),
-		Dexterity:    abilityRoll(),
-		Constitution: abilityRoll(),
-		Intelligence: abilityRoll(),
-		Wisdom:       abilityRoll(),
-		Charisma:     abilityRoll(),
+		Strength:     rollAbilityDefense(),
+		Dexterity:    rollAbilityDefense(),
+		Constitution: rollAbilityDefense(),
+		Intelligence: rollAbilityDefense(),
+		Wisdom:       rollAbilityDefense(),
+		Charisma:     rollAbilityDefense(),
+		Armor:        rollArmor(),
 	}
 }
 
@@ -64,29 +91,33 @@ func roll(sides int) int {
 	return rand.Intn(sides) + 1
 }
 
-func abilityRoll() int {
+func rollAbilityDefense() int {
 	rolls := []int{roll(6), roll(6), roll(6)}
+	return min(rolls) + 10
+}
 
-	min := rolls[0]
-	minIndex := 0
-	for i, roll := range rolls {
-		if min > roll {
-			min = roll
-			minIndex = i
+func min(arr []int) int {
+	cur := arr[0]
+
+	for _, v := range arr {
+		if cur > v {
+			cur = v
 		}
 	}
 
-	return sum(removeIndex(rolls, minIndex)...)
+	return cur
 }
 
-func removeIndex(arr []int, index int) []int {
-	return append(arr[:index], arr[index+1:]...)
-}
-
-func sum(n ...int) int {
-	count := 0
-	for _, v := range n {
-		count += v
+func rollArmor() int {
+	roll := roll(20)
+	if roll == 20 {
+		return Chain
 	}
-	return count
+	if roll >= 15 {
+		return Brigadine
+	}
+	if roll >= 4 {
+		return Gambeson
+	}
+	return NoArmor
 }
