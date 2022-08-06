@@ -25,6 +25,9 @@ var funcs = template.FuncMap{
 	"slots": func(inv Inventory) int {
 		return Slots(inv)
 	},
+	"plaintext": func(k Knave) string {
+		return PlainTextKnave(k)
+	},
 }
 
 type IndexContent struct {

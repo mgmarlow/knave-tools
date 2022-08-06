@@ -97,16 +97,6 @@ func Slots(items []Item) int {
 	return count
 }
 
-func PlainTextInventory(items []Item) string {
-	str := ""
-
-	for _, item := range items {
-		str += fmt.Sprintf("* %s\n", item)
-	}
-
-	return str
-}
-
 func rollArmor() []string {
 	roll := Roll(20)
 	if roll == 20 {
