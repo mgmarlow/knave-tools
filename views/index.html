@@ -2,7 +2,9 @@
 
 <h1>Welcome, {{.Knave.Name}}</h1>
 
-<section>
+<div><p>{{formatTraits .Knave.Traits}}</p></div>
+
+<div>
   <h2>Attributes</h2>
 
   <table>
@@ -48,15 +50,15 @@
   </table>
 
   <div>Armor: +{{.Knave.Armor}} (Defense: {{defense .Knave.Armor}})</div>
-</section>
+</div>
 
-<section>
+<div>
   <h2>Inventory</h2>
   <ul>
     {{range .Knave.Inventory}}
     <li>{{.Name}}</li>
     {{end}}
   </ul>
-</section>
+</div>
 
 {{end}}

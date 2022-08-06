@@ -10,6 +10,7 @@ type Knave struct {
 	Charisma     int
 	Armor        int
 	Inventory    Inventory
+	Traits       Traits
 }
 
 func NewKnave() *Knave {
@@ -25,6 +26,7 @@ func NewKnave() *Knave {
 		Charisma:     rollAbilityDefense(),
 		Armor:        getArmorBonus(inventory),
 		Inventory:    inventory,
+		Traits:       NewTraits(),
 	}
 }
 

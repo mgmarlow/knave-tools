@@ -25,6 +25,9 @@ var funcs = template.FuncMap{
 	"defense": func(bonus int) int {
 		return bonus + 10
 	},
+	"formatTraits": func(t Traits) string {
+		return t.toString()
+	},
 }
 
 type IndexContent struct {
