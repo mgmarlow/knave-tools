@@ -81,7 +81,6 @@ func Slots(items []Item) int {
 	return count
 }
 
-// TODO: Maybe just sample these and repeat names for probability
 func rollArmor() []string {
 	roll := Roll(20)
 	if roll == 20 {
