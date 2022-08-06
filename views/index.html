@@ -1,11 +1,14 @@
 {{define "content"}}
 
-<h1>Welcome, {{.Knave.Name}}</h1>
+<h1>Welcome, Knave</h1>
 
 <div><p>{{formatTraits .Knave.Traits}}</p></div>
 
 <div>
   <h2>Attributes</h2>
+
+  <div>Hp: {{.Knave.Hp}}</div>
+  <div>Armor: +{{.Knave.Armor}} (Defense: {{defense .Knave.Armor}})</div>
 
   <table>
     <thead>
@@ -48,12 +51,10 @@
       </tr>
     </tbody>
   </table>
-
-  <div>Armor: +{{.Knave.Armor}} (Defense: {{defense .Knave.Armor}})</div>
 </div>
 
 <div>
-  <h2>Inventory</h2>
+  <h2>Inventory ({{slots .Knave.Inventory}}/{{.Knave.Constitution}})</h2>
   <ul>
     {{range .Knave.Inventory}}
     <li>{{.Name}}</li>

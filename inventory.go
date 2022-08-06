@@ -59,6 +59,28 @@ func NewInventory() Inventory {
 	})
 }
 
+func ArmorBonus(items []Item) int {
+	count := 0
+
+	for _, item := range items {
+		count += item.ArmorBonus
+	}
+
+	if count > 0 {
+		return count
+	}
+
+	return 1
+}
+
+func Slots(items []Item) int {
+	count := 0
+	for _, item := range items {
+		count += item.Slots
+	}
+	return count
+}
+
 // TODO: Maybe just sample these and repeat names for probability
 func rollArmor() []string {
 	roll := Roll(20)

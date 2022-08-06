@@ -28,6 +28,9 @@ var funcs = template.FuncMap{
 	"formatTraits": func(t Traits) string {
 		return t.toString()
 	},
+	"slots": func(inv Inventory) int {
+		return Slots(inv)
+	},
 }
 
 type IndexContent struct {
