@@ -20,29 +20,10 @@ var files embed.FS
 // Template functions
 var funcs = template.FuncMap{
 	"bonus": func(defense int) int {
-		return defense - 10
-	},
-	"defense": func(bonus int) int {
-		return bonus + 10
-	},
-	"formatTraits": func(t Traits) string {
-		return t.toString()
+		return Bonus(defense)
 	},
 	"slots": func(inv Inventory) int {
 		return Slots(inv)
-	},
-	"formatItem": func(item Item) string {
-		if item.ArmorBonus != 0 {
-			return fmt.Sprintf("%s (%d slot(s), %d quality)",
-				item.Name, item.Slots, item.Quality)
-		}
-
-		if item.Damage != 0 {
-			return fmt.Sprintf("%s (d%d damage, %d slot(s) %d hand(s), %d quality)",
-				item.Name, item.Damage, item.Slots, item.Hands, item.Quality)
-		}
-
-		return item.Name
 	},
 }
 

@@ -2,7 +2,7 @@
 
 <h1>Welcome, Knave</h1>
 
-<div><p>{{formatTraits .Knave.Traits}}</p></div>
+<p>{{.Knave.Traits}}</p>
 
 <h4>Attributes</h4>
 
@@ -52,8 +52,8 @@
     </tr>
     <tr>
       <td>Armor</td>
-      <td>+ {{.Knave.Armor}}</td>
-      <td>{{defense .Knave.Armor}}</td>
+      <td>+ {{bonus .Knave.Armor}}</td>
+      <td>{{.Knave.Armor}}</td>
     </tr>
   </tbody>
 </table>
@@ -61,13 +61,21 @@
 <h4>Inventory ({{slots .Knave.Inventory}}/{{.Knave.Constitution}} slots)</h4>
 <ul>
   {{range .Knave.Inventory}}
-  <li>{{formatItem .}}</li>
+  <li>{{.}}</li>
   {{end}}
 </ul>
+
+<p><button id="copy" data-txt="{{.Knave}}">Copy Knave to clipboard</button></p>
 
 <footer>
   <a href="https://github.com/mgmarlow/knave-tools">knave-tools</a> for
   <a href="https://questingbeast.itch.io/knave">Knave</a>, a game by Ben Milton.
 </footer>
+
+<script>
+  document.getElementById("copy").addEventListener("click", function () {
+    navigator.clipboard.writeText(this.dataset.txt);
+  });
+</script>
 
 {{end}}

@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 type Item struct {
 	Name       string
 	ArmorBonus int
@@ -7,6 +9,20 @@ type Item struct {
 	Quality    int
 	Hands      int
 	Damage     int
+}
+
+func (i Item) String() string {
+	if i.ArmorBonus != 0 {
+		return fmt.Sprintf("%s (%d slot(s), %d quality)",
+			i.Name, i.Slots, i.Quality)
+	}
+
+	if i.Damage != 0 {
+		return fmt.Sprintf("%s (d%d damage, %d slot(s) %d hand(s), %d quality)",
+			i.Name, i.Damage, i.Slots, i.Hands, i.Quality)
+	}
+
+	return i.Name
 }
 
 type Inventory = []Item
@@ -59,7 +75,7 @@ func NewInventory() Inventory {
 	})
 }
 
-func ArmorBonus(items []Item) int {
+func ArmorDefense(items []Item) int {
 	count := 0
 
 	for _, item := range items {
@@ -67,10 +83,10 @@ func ArmorBonus(items []Item) int {
 	}
 
 	if count > 0 {
-		return count
+		return count + 10
 	}
 
-	return 1
+	return 11
 }
 
 func Slots(items []Item) int {
@@ -79,6 +95,16 @@ func Slots(items []Item) int {
 		count += item.Slots
 	}
 	return count
+}
+
+func PlainTextInventory(items []Item) string {
+	str := ""
+
+	for _, item := range items {
+		str += fmt.Sprintf("* %s\n", item)
+	}
+
+	return str
 }
 
 func rollArmor() []string {

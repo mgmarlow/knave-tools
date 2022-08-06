@@ -109,7 +109,7 @@ func NewTraits() Traits {
 	}
 }
 
-func (t Traits) toString() string {
+func (t Traits) String() string {
 	fmtStr := "%s. Wears %s clothes and speaks in a %s manner. A %s physique supports " +
 		"a %s face, with %s skin and %s hair. Is %s, but %s. Has been %s in " +
 		"the past. Favors %s."
