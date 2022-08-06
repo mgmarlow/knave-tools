@@ -5,8 +5,14 @@ import (
 	"fmt"
 	"html/template"
 	"log"
+	"math/rand"
 	"net/http"
+	"time"
 )
+
+func init() {
+	rand.Seed(time.Now().UnixMicro())
+}
 
 //go:embed views/*
 var files embed.FS
