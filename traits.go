@@ -110,8 +110,8 @@ func NewTraits() Traits {
 }
 
 func (t Traits) toString() string {
-	fmtStr := "%s. Wears %s clothes, and has %s speech. Has a %s physique, " +
-		"a %s face, %s skin, and %s hair. Is %s, but %s. Has been %s in " +
+	fmtStr := "%s. Wears %s clothes and speaks in a %s manner. A %s physique supports " +
+		"a %s face, with %s skin and %s hair. Is %s, but %s. Has been %s in " +
 		"the past. Favors %s."
 
 	return fmt.Sprintf(fmtStr,
