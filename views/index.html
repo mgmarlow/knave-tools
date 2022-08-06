@@ -4,62 +4,65 @@
 
 <div><p>{{formatTraits .Knave.Traits}}</p></div>
 
-<div>
-  <h2>Attributes</h2>
+<h4>Attributes</h4>
 
-  <div>Hp: {{.Knave.Hp}}</div>
-  <div>Armor: +{{.Knave.Armor}} (Defense: {{defense .Knave.Armor}})</div>
+<div>HP: {{.Knave.Hp}}</div>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Attr</th>
-        <th>Bonus</th>
-        <th>Defense</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>STR</td>
-        <td>+ {{bonus .Knave.Strength}}</td>
-        <td>{{.Knave.Strength}}</td>
-      </tr>
-      <tr>
-        <td>DEX</td>
-        <td>+ {{bonus .Knave.Dexterity}}</td>
-        <td>{{.Knave.Dexterity}}</td>
-      </tr>
-      <tr>
-        <td>CON</td>
-        <td>+ {{bonus .Knave.Constitution}}</td>
-        <td>{{.Knave.Constitution}}</td>
-      </tr>
-      <tr>
-        <td>INT</td>
-        <td>+ {{bonus .Knave.Intelligence}}</td>
-        <td>{{.Knave.Intelligence}}</td>
-      </tr>
-      <tr>
-        <td>CHA</td>
-        <td>+ {{bonus .Knave.Charisma}}</td>
-        <td>{{.Knave.Charisma}}</td>
-      </tr>
-      <tr>
-        <td>WIS</td>
-        <td>+ {{bonus .Knave.Wisdom}}</td>
-        <td>{{.Knave.Wisdom}}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Attr</th>
+      <th>Bonus</th>
+      <th>Defense</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>STR</td>
+      <td>+ {{bonus .Knave.Strength}}</td>
+      <td>{{.Knave.Strength}}</td>
+    </tr>
+    <tr>
+      <td>DEX</td>
+      <td>+ {{bonus .Knave.Dexterity}}</td>
+      <td>{{.Knave.Dexterity}}</td>
+    </tr>
+    <tr>
+      <td>CON</td>
+      <td>+ {{bonus .Knave.Constitution}}</td>
+      <td>{{.Knave.Constitution}}</td>
+    </tr>
+    <tr>
+      <td>INT</td>
+      <td>+ {{bonus .Knave.Intelligence}}</td>
+      <td>{{.Knave.Intelligence}}</td>
+    </tr>
+    <tr>
+      <td>CHA</td>
+      <td>+ {{bonus .Knave.Charisma}}</td>
+      <td>{{.Knave.Charisma}}</td>
+    </tr>
+    <tr>
+      <td>WIS</td>
+      <td>+ {{bonus .Knave.Wisdom}}</td>
+      <td>{{.Knave.Wisdom}}</td>
+    </tr>
+    <tr>
+      <td colspan="3"></td>
+    </tr>
+    <tr>
+      <td>Armor</td>
+      <td>+ {{.Knave.Armor}}</td>
+      <td>{{defense .Knave.Armor}}</td>
+    </tr>
+  </tbody>
+</table>
 
-<div>
-  <h2>Inventory ({{slots .Knave.Inventory}}/{{.Knave.Constitution}})</h2>
-  <ul>
-    {{range .Knave.Inventory}}
-    <li>{{.Name}}</li>
-    {{end}}
-  </ul>
-</div>
+<h4>Inventory ({{slots .Knave.Inventory}}/{{.Knave.Constitution}} slots)</h4>
+<ul>
+  {{range .Knave.Inventory}}
+  <li>{{formatItem .}}</li>
+  {{end}}
+</ul>
 
 {{end}}

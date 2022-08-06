@@ -31,6 +31,17 @@ var funcs = template.FuncMap{
 	"slots": func(inv Inventory) int {
 		return Slots(inv)
 	},
+	"formatItem": func(item Item) string {
+		if item.ArmorBonus != 0 {
+			return fmt.Sprintf("%s (%d slot(s), %d quality)", item.Name, item.Slots, item.Quality)
+		}
+
+		if item.Damage != 0 {
+			return fmt.Sprintf("%s (d%d damage, %d slot(s) %d hand(s), %d quality)", item.Name, item.Damage, item.Slots, item.Hands, item.Quality)
+		}
+
+		return item.Name
+	},
 }
 
 type IndexContent struct {
