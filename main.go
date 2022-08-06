@@ -16,8 +16,8 @@ var funcs = template.FuncMap{
 	"bonus": func(defense int) int {
 		return defense - 10
 	},
-	"armorName": func(kind int) string {
-		return ArmorToDisplayName(kind)
+	"defense": func(bonus int) int {
+		return bonus + 10
 	},
 }
 

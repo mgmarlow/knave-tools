@@ -46,14 +46,17 @@
       </tr>
     </tbody>
   </table>
+
+  <div>Armor: +{{.Knave.Armor}} (Defense: {{defense .Knave.Armor}})</div>
 </section>
 
 <section>
   <h2>Inventory</h2>
-  <p>
-    Wearing: <strong>{{armorName .Knave.Armor}}</strong> (Bonus: +{{bonus
-    .Knave.Armor}} Defense: {{.Knave.Armor}})
-  </p>
+  <ul>
+    {{range .Knave.Inventory}}
+    <li>{{.Name}}</li>
+    {{end}}
+  </ul>
 </section>
 
 {{end}}
