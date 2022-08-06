@@ -17,3 +17,11 @@ Serve the project:
 ```
 make run
 ```
+
+## Deployment
+
+Deploy to fly.io via [flyctl](https://fly.io/docs/flyctl/installing/):
+
+```
+make deploy
+```
